@@ -33,21 +33,21 @@ void interpret();
 
 int main(){
 	char inst[4];
-    int aux = 1, var = 0, aux2 = 0;
+    	int aux = 1, var = 0, aux2 = 0;
 
 	instcount = 0;
 
-    printf("Enter instructions (OPR 0 0 to end): \n\n");
+    	printf("Enter instructions (OPR 0 0 to end): \n\n");
 
     while(aux){
-        scanf("%s", inst);
+    	scanf("%s", inst);
         scanf("%d %d", &code[instcount].l, &code[instcount].a);
         if(strcmp(inst, "OPR") != 0 || code[instcount].l != 0 || code[instcount].a != 0){
         	for (int x = 0; x < 8; x++){
         		if(strcmp(inst, instructions[x]) == 0){
         			var = x;
-                    aux2 += 1;
-                }
+                   		aux2 += 1;
+                	}
         	}
 
             if(aux2 != 0){
@@ -80,14 +80,14 @@ int base(int l){
 }
 
 void interpret(){	
-    int aux, number_inst = -1;
-    char *instruc = (char*)calloc(4,sizeof(char));
+	int aux, number_inst = -1;
+    	char *instruc = (char*)calloc(4,sizeof(char));
     
 	s[1] = s[2] = s[3] = 0;
-    t = p = 0;
+    	t = p = 0;
 	b = 1;
 
-    printf("\n\nN    Instruction  Level    Argument    StackPtr     ProgCounter     \tStack\n\n");
+    	printf("\n\nN    Instruction  Level    Argument    StackPtr     ProgCounter     \tStack\n\n");
 	
 	while(p < instcount){
 		i = code[p];
@@ -97,7 +97,7 @@ void interpret(){
 			case LIT:{
 				t += 1;
 				s[t] = i.a;
-                number_inst += 1;
+                		number_inst += 1;
 				break;
 			}
 			case OPR:{
@@ -106,77 +106,77 @@ void interpret(){
 						t = b - 1;
 						p = s[t + 3];
 						b = s[t + 2];
-                        number_inst += 1;
+                        			number_inst += 1;
 						break;
 					} 
 					case 1:{
 						s[t] = ~s[t];
-                        number_inst += 1;
+                        			number_inst += 1;
 						break;
 					}
 					case 2:{
 						t -= 1;
 						s[t] = s[t] + s[t+1];
-                        number_inst += 1;
+                       			 	number_inst += 1;
 						break;
 					}
 					case 3:{
 						t -= 1;
 						s[t] = s[t] - s[t+1];
-                        number_inst += 1;
+                        			number_inst += 1;
 						break;
 					}
 					case 4:{
 						t -= 1;
 						s[t] = s[t] * s[t+1];
-                        number_inst += 1;
+                        			number_inst += 1;
 						break;
 					}
 					case 5:{
 						t -= 1;
 						s[t] = s[t] / s[t+1];
-                        number_inst += 1;
+                        			number_inst += 1;
 						break;
 					}
 					case 6:{
 						s[t] = ((s[t]%2) == 1);
-                        number_inst += 1;
+                        			number_inst += 1;
 						break;
 					}
 					case 7:{
 						t -= 1;
 						s[t] = (s[t] == s[t+1]);
-                        number_inst += 1;
+                        			number_inst += 1;
 						break;
 					}
 					case 8:{
 						t -= 1;
 						s[t] = (s[t] != s[t+1]);
-                        number_inst += 1;
+                        			number_inst += 1;
 						break;
 					}
 					case 9:{
 						t -= 1;
 						s[t] = (s[t] < s[t+1]);
-                        number_inst += 1;
+                        			number_inst += 1;
 						break;
 					}
 					case 10:{
 						t -= 1;
 						s[t] = (s[t] >= s[t+1]);
-                        number_inst += 1;
+                        			number_inst += 1;
 						break;
 					}
 					case 11:{
 						t -= 1;
 						s[t] = (s[t] > s[t+1]);
-                        number_inst += 1;
+                        			number_inst += 1;
 						break;
 					}
 					case 12:{
 						t -= 1;
 						s[t] = (s[t] <= s[t+1]);
-                        number_inst += 1;
+                        			number_inst += 1;
 						break;
 					}
 				}
@@ -185,12 +185,12 @@ void interpret(){
 			case LOD:{
 				t += 1;
 				s[t] = s[base(i.l) + i.a];
-                number_inst += 1;
+                		number_inst += 1;
 				break;
 			}
 			case STO:{
 				s[base(i.l) + i.a] = s[t];
-                number_inst += 1;
+                		number_inst += 1;
 				t -= 1;
 				break;
 			}
@@ -200,23 +200,23 @@ void interpret(){
 				s[t+3] = p;
 				b = t + 1;
 				p = i.a;
-                number_inst += 1;
+                		number_inst += 1;
 				break;
 			}
 			case INT:{
 				t += i.a;
-                number_inst += 1;
+                		number_inst += 1;
 				break;
 			}
 			case JMP:{
 				p = i.a;
-                number_inst += 1;
+                		number_inst += 1;
 				break;
 			}
 			case JPC:{
 				if(s[t] == 0)
-					p = i.a;
-                number_inst += 1;
+				p = i.a;
+                		number_inst += 1;
 				t -= 1;
 				break;
 			}
@@ -229,19 +229,19 @@ void interpret(){
 		}
 
         if(i.f < 8)
-            strcpy(instruc, instructions[i.f]);
+        	strcpy(instruc, instructions[i.f]);
         else
 	        strcpy(instruc, "---");
 
 
 		printf("%d %9s %9d %10d %10d %13d \t   ", number_inst, instruc, i.l, i.a, s[t], p);
-        printf("     ");
+        	printf("     ");
         
 		for(aux = b; aux < t+1; aux++){
-            printf("[%1d]", s[aux]);
-            if(aux == 4)
-                printf(" | ");
-        }
+            		printf("[%1d]", s[aux]);
+            		if(aux == 4)
+                		printf(" | ");
+        	}
 
 		printf("\n");
 	}
