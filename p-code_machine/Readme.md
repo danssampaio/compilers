@@ -2,9 +2,7 @@
 
 Code transcribed from the paschal language
 
----
 # Commands
-#
 
 | Command | Action |
 | ------ | ------ |
@@ -17,10 +15,8 @@ Code transcribed from the paschal language
 | JMP 0 a | jump to a |
 | JPC 0 a | jump conditional to a |
 
-#
----
 # Commands for OPR
-#
+
 | Code | Symbol | Action |
 | ------ | ------ | ------ |
 | 0 | Return | Return from a subroutine|
