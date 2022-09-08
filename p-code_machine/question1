@@ -1,2 +1,36 @@
 1. Soma de dois números inteiros.
 
+INT 0 4
+LIT 0 5
+LIT 0 3
+OPR 0 2
+STO 0 3
+OPR 0 0
+
+N    Instruction  Level    Argument    StackPtr     ProgCounter         Stack
+
+0       INT         0          4          0             1           [0][0][0][0]
+1       LIT         0          5          5             2           [0][0][0][0][5]
+2       LIT         0          3          3             3           [0][0][0][0][5][3]
+3       OPR         0          2          8             4           [0][0][0][0][8]
+4       STO         0          3          8             5           [0][0][0][8]
+
+OUTPUT: 8
+
+
+INT 0 3
+LIT 0 5
+LIT 0 3
+OPR 0 2
+STO 0 2
+OPR 0 0
+
+N    Instruction  Level    Argument    StackPtr     ProgCounter         Stack
+
+0       INT         0          3          0             1           [0][0][0]
+1       LIT         0          5          5             2           [0][0][0][5]
+2       LIT         0          3          3             3           [0][0][0][5][3]
+3       OPR         0          2          8             4           [0][0][0][8]
+4       STO         0          2          8             5           [0][0][8]
+
+OUTPUT: 8
