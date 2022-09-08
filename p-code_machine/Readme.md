@@ -33,7 +33,6 @@ Code transcribed from the paschal language
 | 11 | > | x = pop(); y = pop(); push(y > x) |
 | 12 | <= | x = pop(); y = pop(); push(y <= x) |
 
-#
 # Starting the program in Linux
 
 With gcc installed on your machine, use these commands in the terminal for compile the program.
