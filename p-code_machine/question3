@@ -1,5 +1,28 @@
 3. Soma dos números naturais de 1 até 100 (iterativamente).
 
+INT 0 3
+LIT 0 1
+STO 0 0
+LIT 0 2
+STO 0 1
+LOD 0 0
+LOD 0 1
+OPR 0 2
+STO 0 2
+LOD 0 0
+LOD 0 1
+OPR 0 2
+STO 0 1
+LOD 0 1
+LOD 0 2
+OPR 0 2
+STO 0 2
+LOD 0 1
+LIT 0 100
+OPR 0 7
+JPC 0 9
+OPR 0 0
+
 N    Instruction  Level    Argument    StackPtr     ProgCounter         Stack
 
 0       INT         0          3          0             1           [0][0][0]
